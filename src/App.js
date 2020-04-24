@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import NavBar from "./components/navbar/navbar";
+import {BrowserRouter, Switch, Route} from "react-router-dom";
+import newProduct from "./components/handler/newProduct";
+import Signin from "./components/sigin/signin";
+import editProducts from "./components/handler/editProducts";
+import editProductPage from "./components/handler/editProductPage";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+
+    render() {
+        return (
+            <div>
+                {localStorage.getItem("token") ? (
+                <div>
+                    <NavBar/>
+                    <div className="container-md" style={{marginTop: "30px"}}>
+                        < BrowserRouter>
+                            <Switch>
+                                <Route path="/newProduct" component={newProduct}/>
+                                <Route path="/editProducts" component={editProducts}/>
+                                <Route path="/editProduct" component={editProductPage}/>
+                            </Switch>
+                        </BrowserRouter>
+                    </div>
+                </div>) :
+                    (<Signin />)}
+            </div>
+        );
+    }
 }
 
 export default App;
