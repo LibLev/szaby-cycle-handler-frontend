@@ -2,10 +2,10 @@ import React, {Component} from 'react';
 import './App.css';
 import NavBar from "./components/navbar/navbar";
 import {BrowserRouter, Switch, Route} from "react-router-dom";
-import newComponent from "./components/handler/newProduct";
 import Signin from "./components/sigin/signin";
-import editProducts from "./components/handler/editProducts";
-import editProductPage from "./components/handler/editProductPage";
+import NewBicycle from "./components/handler/bicycle/newBicycle";
+import EditBicycles from "./components/handler/bicycle/editBicycles";
+import EditBicyclePage from "./components/handler/bicycle/editBicyclePage";
 
 class App extends Component {
 
@@ -19,9 +19,9 @@ class App extends Component {
                     <div className="container-md" style={{marginTop: "30px"}}>
                         < BrowserRouter>
                             <Switch>
-                                <Route path="/newComponent" component={newProduct}/>
-                                <Route path="/editProducts" component={editProducts}/>
-                                <Route path="/editProduct" component={editProductPage}/>
+                                <Route path="/newBicycle" component={NewBicycle}/>
+                                <Route path="/editBicycles" component={EditBicycles}/>
+                                <Route path="/editBicycle" component={EditBicyclePage}/>
                             </Switch>
                         </BrowserRouter>
                     </div>

@@ -3,37 +3,102 @@ import 'bootstrap/dist/css/bootstrap.css';
 import axios from "axios";
 import {Redirect} from "react-router";
 
-class newBicycle extends Component {
+class NewBicycle extends Component {
 
     state = {
-        productName: "",
-        productBrand: "",
-        productDetails: "",
-        productPrice: "",
-        productType: "",
+        name: "",
+        brand: "",
+        frame: "",
+        fork:"",
+        groupSet:"",
+        shifters:"",
+        callipers:"",
+        breaks:"",
+        seatPost:"",
+        saddle:"",
+        stem:"",
+        handleBar:"",
+        barTape:"",
+        pedal:"",
+        wheels:"",
+        details: "",
+        price: "",
+        typeOfBicycle: "",
         selectedFiles: null,
         imgUris: [],
         redirect: false
     };
 
+    frameOnChange = event => {
+        this.setState({frame: event.target.value})
+    };
+
+    forkOnChange = event => {
+        this.setState({fork: event.target.value})
+    };
+
+    groupSetOnChange = event => {
+        this.setState({groupSet: event.target.value})
+    };
+
+    shiftersOnChange = event => {
+        this.setState({shifters: event.target.value})
+    };
+
+    callipersOnChange = event => {
+        this.setState({callipers: event.target.value})
+    };
+
+    breaksOnChange = event => {
+        this.setState({breaks: event.target.value})
+    };
+
+    seatPostOnChange = event => {
+        this.setState({seatPost: event.target.value})
+    };
+
+    saddleOnChange = event => {
+        this.setState({saddle: event.target.value})
+    };
+
+    stemOnChange = event => {
+        this.setState({stem: event.target.value})
+    };
+
+    handleBarOnChange = event => {
+        this.setState({handleBar: event.target.value})
+    };
+
+    barTapeOnChange = event => {
+        this.setState({barTape: event.target.value})
+    };
+
+    pedalOnChange = event => {
+        this.setState({pedal: event.target.value})
+    };
+
+    wheelsOnChange = event => {
+        this.setState({wheels: event.target.value})
+    };
+
     productNameOnChange = event => {
-        this.setState({productName: event.target.value})
+        this.setState({name: event.target.value})
     };
 
     productBrandOnChange = event => {
-        this.setState({productBrand: event.target.value})
+        this.setState({brand: event.target.value})
     };
 
     productDetailsOnChange = event => {
-        this.setState({productDetails: event.target.value})
+        this.setState({details: event.target.value})
     };
 
     productPriceOnChange = event => {
-        this.setState({productPrice: event.target.value})
+        this.setState({price: event.target.value})
     };
 
     onChangeProductType = event => {
-        this.setState({productType: event.target.value});
+        this.setState({typeOfBicycle: event.target.value});
         console.log(this.state.productType);
     };
 
@@ -107,11 +172,16 @@ class newBicycle extends Component {
                         <button onClick={this.fileUploadHandler}>Képek feltöltése</button>
                     </div>
                     <div className="form-group">
-                        <label htmlFor="exampleFormControlInput1">Termék típusa</label>
+                        <label htmlFor="exampleFormControlInput1">Kerékpár típusa</label>
                         <select name="productType" onChange={this.onChangeProductType}>
                             <option value="none">None</option>
-                            <option value="bicycle">Kerékpár</option>
-                            <option value="component">Alkatrész</option>
+                            <option value="road">Országúti</option>
+                            <option value="track">Pálya</option>
+                            <option value="gravel">Gravel</option>
+                            <option value="cycleCross">CycleCross</option>
+                            <option value="mountain">MTB</option>
+                            <option value="trekking">Trekking</option>
+                            <option value="city">City</option>
                         </select>
                     </div>
                     <div className="form-group">
@@ -123,6 +193,71 @@ class newBicycle extends Component {
                         <label htmlFor="exampleFormControlInput1">Márka</label>
                         <input type="text" className="form-control" id="exampleFormControlInput1"
                                placeholder="De Rosa" onChange={this.productBrandOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Váz</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="De Rosa King CF" onChange={this.frameOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Villa</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="De Rosa King fullcarbon" onChange={this.forkOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Szett</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Campagnolo Super Record" onChange={this.groupSetOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Váltók</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Campagnolo Record" onChange={this.shiftersOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Fékváltókar</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Campagnolo Record" onChange={this.callipersOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Fékek</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Campagnolo Record" onChange={this.breaksOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Nyeregcső</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Deda" onChange={this.seatPostOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Nyereg</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Selle Italia" onChange={this.saddleOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Stucni</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Deda" onChange={this.stemOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Kormány</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Deda" onChange={this.handleBarOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Bandázs/Markolat</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Deda" onChange={this.barTapeOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Pedál</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Look kéo" onChange={this.pedalOnChange}/>
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="exampleFormControlInput1">Kerekek</label>
+                        <input type="text" className="form-control" id="exampleFormControlInput1"
+                               placeholder="Mavic Cosmic" onChange={this.wheelsOnChange}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Adatok</label>
@@ -141,4 +276,4 @@ class newBicycle extends Component {
     }
 }
 
-export default newBicycle;
+export default NewBicycle;
