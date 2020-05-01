@@ -28,7 +28,7 @@ class EditBicycleCard extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to="/editProduct"/>
+            return <Redirect to="/editBicycle"/>
         }
     };
 

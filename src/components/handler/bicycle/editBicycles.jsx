@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
-import ProductCard from "../editProductCard";
+import EditBicycleCard from "./editBicycleCard";
 
 
 class EditBicycles extends Component {
@@ -31,7 +31,7 @@ class EditBicycles extends Component {
         return (
             <div className="container-md">
                 <div className="row">
-                    {this.state.data.map((d) => (<ProductCard data={d}/>))}
+                    {this.state.data.map((d) => (<EditBicycleCard data={d}/>))}
                 </div>
             </div>
         )

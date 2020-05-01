@@ -140,11 +140,24 @@ class NewBicycle extends Component {
         let token = localStorage.getItem("token");
         await axios.post("http://localhost:8080/saveBicycle",
             {
-                name: this.state.productName,
-                brand: this.state.productBrand,
-                details: this.state.productDetails,
-                price: this.state.productPrice,
-                productType: this.state.productType,
+                name: this.state.name,
+                brand: this.state.brand,
+                details: this.state.details,
+                price: this.state.price,
+                typeOfBicycle: this.state.typeOfBicycle,
+                frame: this.state.frame,
+                fork: this.state.fork,
+                groupSet:this.state.groupSet,
+                shifters:this.state.shifters,
+                callipers:this.state.callipers,
+                breaks:this.state.breaks,
+                seatPost:this.state.seatPost,
+                saddle:this.state.saddle,
+                stem:this.state.stem,
+                handlebar:this.state.handleBar,
+                barTape:this.state.barTape,
+                pedal:this.state.pedal,
+                wheels:this.state.wheels,
                 imgUris: this.state.imgUris.toString()
             }, {
                 headers: {
@@ -152,16 +165,19 @@ class NewBicycle extends Component {
                 },
             })
             .then(console.log(this.state))
-            .then(resp => {
+            /*.then(resp => {
                 console.log(resp);
                 this.setState({redirect: true})
+            }*/
+            .catch(e =>{
+                console.log(e.message)
             });
     };
 
     render() {
         return (
             <div>
-                {this.renderRedirect()}
+               {/* {this.renderRedirect()}*/}
                 <div className="container">
                     <div className="form-group">
                         <div>

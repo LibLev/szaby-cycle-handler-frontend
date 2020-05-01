@@ -10,27 +10,93 @@ class EditBicyclePage extends Component {
     state = {
         isLoaded: false,
         data: [],
-        productName: "",
-        productBrand: "",
-        productDetails: "",
-        productPrice: "",
+        name: "",
+        brand: "",
+        frame: "",
+        fork: "",
+        groupSet: "",
+        shifters: "",
+        callipers: "",
+        breaks: "",
+        seatPost: "",
+        saddle: "",
+        stem: "",
+        handleBar: "",
+        barTape: "",
+        pedal: "",
+        wheels: "",
+        details: "",
+        price: "",
+        typeOfBicycle: "",
         redirect: false
     };
 
+    frameOnChange = event => {
+        this.setState({frame: event.target.value})
+    };
+
+    forkOnChange = event => {
+        this.setState({fork: event.target.value})
+    };
+
+    groupSetOnChange = event => {
+        this.setState({groupSet: event.target.value})
+    };
+
+    shiftersOnChange = event => {
+        this.setState({shifters: event.target.value})
+    };
+
+    callipersOnChange = event => {
+        this.setState({callipers: event.target.value})
+    };
+
+    breaksOnChange = event => {
+        this.setState({breaks: event.target.value})
+    };
+
+    seatPostOnChange = event => {
+        this.setState({seatPost: event.target.value})
+    };
+
+    saddleOnChange = event => {
+        this.setState({saddle: event.target.value})
+    };
+
+    stemOnChange = event => {
+        this.setState({stem: event.target.value})
+    };
+
+    handleBarOnChange = event => {
+        this.setState({handleBar: event.target.value})
+    };
+
+    barTapeOnChange = event => {
+        this.setState({barTape: event.target.value})
+    };
+
+    pedalOnChange = event => {
+        this.setState({pedal: event.target.value})
+    };
+
+    wheelsOnChange = event => {
+        this.setState({wheels: event.target.value})
+    };
+
     productNameOnChange = event => {
-        this.setState({productName: event.target.value})
+        this.setState({name: event.target.value})
     };
 
     productBrandOnChange = event => {
-        this.setState({productBrand: event.target.value})
+        this.setState({brand: event.target.value})
     };
 
     productDetailsOnChange = event => {
-        this.setState({productDetails: event.target.value})
+        this.setState({details: event.target.value})
     };
 
     productPriceOnChange = event => {
-        this.setState({productPrice: event.target.value})
+        this.setState({price: event.target.value})
     };
 
 
@@ -55,10 +121,10 @@ class EditBicyclePage extends Component {
         let token = localStorage.getItem("token");
         axios.post("http://localhost:8080/updateBicycle", {
             id: this.state.data.id,
-            name: this.state.productName,
-            brand: this.state.productBrand,
-            details: this.state.productDetails,
-            price: this.state.productPrice,
+            name: this.state.name,
+            brand: this.state.brand,
+            details: this.state.details,
+            price: this.state.price,
             productType: this.state.data.productType,
             imgUris: this.state.data.imgUris.toString()
         }, {
@@ -144,9 +210,96 @@ class EditBicyclePage extends Component {
                                                                     <label className="col-sm-2 control-label"
                                                                            htmlFor="inputContact1"><b>Adatok:</b></label>
                                                                     <div className="col-sm-10">
-                                                                    <textarea onChange={this.productDetailsOnChange}
-                                                                              placeholder={this.state.data.details}
-                                                                              rows="10"/>
+                                                                        <table>
+                                                                            <tr>
+                                                                                <th>Váz</th>
+                                                                                <td>
+                                                                                    <input type="text"
+                                                                                           placeholder={this.state.data.frame}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Villa</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.fork}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Szet</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.groupSet}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Váltó</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.shifters}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Fékváltókar</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.callipers}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Fék</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.breaks}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Nyeregcső</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.seatPost}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Nyereg</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.saddle}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Stucni</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.stem}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Kormány</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.handlebar}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Bandázs/Markolat</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.barTape}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Pedál</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.pedal}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Kerekek</th>
+                                                                                <td><input type="text"
+                                                                                           placeholder={this.state.data.wheels}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+                                                                                <th>Egyéb adatok</th>
+                                                                                <td><textarea type="text"
+                                                                                              className="form-control"
+                                                                                              id="exampleFormControlInput1"
+                                                                                              rows="2"
+                                                                                              placeholder={this.state.data.details}/>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
                                                                     </div>
                                                                 </div>
                                                                 <div className="form-group">
