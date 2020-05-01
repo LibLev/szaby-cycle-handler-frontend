@@ -16,8 +16,10 @@ class NavBar extends Component {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">
-                        <Nav.Link href="/newProduct">Új termék</Nav.Link>
-                        <Nav.Link href="/editProducts">Termékek szerkesztése</Nav.Link>
+                        <Nav.Link href="/newBicycle">Új Kerékpár</Nav.Link>
+                        <Nav.Link href="/newComponent">Új Alkatrész</Nav.Link>
+                        <Nav.Link href="/editBicycles">Kerékpárok szerkesztése</Nav.Link>
+                        <Nav.Link href="/editComponents">Alkatrészek szerkesztése</Nav.Link>
                     </Nav>
                 </Navbar.Collapse>
                 <Form inline>
