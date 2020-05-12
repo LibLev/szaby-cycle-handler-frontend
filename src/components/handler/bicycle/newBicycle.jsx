@@ -165,10 +165,10 @@ class NewBicycle extends Component {
                 },
             })
             .then(console.log(this.state))
-            /*.then(resp => {
+            .then(resp => {
                 console.log(resp);
                 this.setState({redirect: true})
-            }*/
+            })
             .catch(e =>{
                 console.log(e.message)
             });
@@ -177,7 +177,7 @@ class NewBicycle extends Component {
     render() {
         return (
             <div>
-               {/* {this.renderRedirect()}*/}
+                {this.renderRedirect()}
                 <div className="container">
                     <div className="form-group">
                         <div>

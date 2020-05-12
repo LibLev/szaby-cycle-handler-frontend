@@ -14,7 +14,7 @@ class EditComponentCard extends Component {
 
     deleteProduct = () => {
         let token = localStorage.getItem("token");
-        axios.delete("http://localhost:8080/deleteProduct/" + this.props.data.id, {
+        axios.delete("http://localhost:8080/deleteComponent/" + this.props.data.id, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -28,7 +28,7 @@ class EditComponentCard extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to="/editProduct"/>
+            return <Redirect to="/editComponent"/>
         }
     };
 

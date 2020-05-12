@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import ProductCard from "./editComponentCard";
 
 
-class AllProductCard extends Component {
+class editComponents extends Component {
 
     state = {
         data: []
@@ -12,7 +12,7 @@ class AllProductCard extends Component {
 
     getProducts = () => {
         axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-        axios.get(`http://localhost:8080/get-all-product`,)
+        axios.get(`http://localhost:8080/get-all-component`,)
             .then((response) => {
                     console.log(response.data);
                     this.setState({data: response.data})
@@ -38,4 +38,4 @@ class AllProductCard extends Component {
     }
 }
 
-export default AllProductCard;
+export default editComponents;

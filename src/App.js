@@ -6,6 +6,9 @@ import Signin from "./components/sigin/signin";
 import NewBicycle from "./components/handler/bicycle/newBicycle";
 import EditBicycles from "./components/handler/bicycle/editBicycles";
 import EditBicyclePage from "./components/handler/bicycle/editBicyclePage";
+import newComponent from "./components/handler/component/newComponent";
+import editComponents from "./components/handler/component/editComponents";
+import EditComponentPage from "./components/handler/component/editComponentPage";
 
 class App extends Component {
 
@@ -22,6 +25,9 @@ class App extends Component {
                                 <Route path="/newBicycle" component={NewBicycle}/>
                                 <Route path="/editBicycles" component={EditBicycles}/>
                                 <Route path="/editBicycle" component={EditBicyclePage}/>
+                                <Route path="/newComponent" component={newComponent}/>
+                                <Route path="/editComponents" component={editComponents}/>
+                                <Route path="/editComponent" component={EditComponentPage}/>
                             </Switch>
                         </BrowserRouter>
                     </div>

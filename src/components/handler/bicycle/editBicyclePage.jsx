@@ -125,7 +125,20 @@ class EditBicyclePage extends Component {
             brand: this.state.brand,
             details: this.state.details,
             price: this.state.price,
-            productType: this.state.data.productType,
+            typeOfBicycle: this.state.data.typeOfBicycle,
+            frame: this.state.frame,
+            fork: this.state.fork,
+            groupSet:this.state.groupSet,
+            shifters:this.state.shifters,
+            callipers:this.state.callipers,
+            breaks:this.state.breaks,
+            seatPost:this.state.seatPost,
+            saddle:this.state.saddle,
+            stem:this.state.stem,
+            handlebar:this.state.handleBar,
+            barTape:this.state.barTape,
+            pedal:this.state.pedal,
+            wheels:this.state.wheels,
             imgUris: this.state.data.imgUris.toString()
         }, {
             headers: {
@@ -214,85 +227,85 @@ class EditBicyclePage extends Component {
                                                                             <tr>
                                                                                 <th>Váz</th>
                                                                                 <td>
-                                                                                    <input type="text"
+                                                                                    <input onChange={this.frameOnChange} type="text"
                                                                                            placeholder={this.state.data.frame}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Villa</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.forkOnChange} type="text"
                                                                                            placeholder={this.state.data.fork}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Szet</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.groupSetOnChange} type="text"
                                                                                            placeholder={this.state.data.groupSet}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Váltó</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.shiftersOnChange} type="text"
                                                                                            placeholder={this.state.data.shifters}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Fékváltókar</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.callipersOnChange} type="text"
                                                                                            placeholder={this.state.data.callipers}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Fék</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.breaksOnChange} type="text"
                                                                                            placeholder={this.state.data.breaks}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Nyeregcső</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.seatPostOnChange} type="text"
                                                                                            placeholder={this.state.data.seatPost}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Nyereg</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.saddleOnChange} type="text"
                                                                                            placeholder={this.state.data.saddle}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Stucni</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.stemOnChange} type="text"
                                                                                            placeholder={this.state.data.stem}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Kormány</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.handleBarOnChange} type="text"
                                                                                            placeholder={this.state.data.handlebar}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Bandázs/Markolat</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.barTapeOnChange} type="text"
                                                                                            placeholder={this.state.data.barTape}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Pedál</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.pedalOnChange} type="text"
                                                                                            placeholder={this.state.data.pedal}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Kerekek</th>
-                                                                                <td><input type="text"
+                                                                                <td><input onChange={this.wheelsOnChange} type="text"
                                                                                            placeholder={this.state.data.wheels}/>
                                                                                 </td>
                                                                             </tr>
                                                                             <tr>
                                                                                 <th>Egyéb adatok</th>
-                                                                                <td><textarea type="text"
+                                                                                <td><textarea onChange={this.productDetailsOnChange} type="text"
                                                                                               className="form-control"
                                                                                               id="exampleFormControlInput1"
                                                                                               rows="2"

@@ -67,19 +67,19 @@ class newComponent extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to="/editProducts"/>
+            return <Redirect to="/editComponents"/>
         }
     };
 
     saveProduct = async () => {
         let token = localStorage.getItem("token");
-        await axios.post("http://localhost:8080/saveProduct",
+        await axios.post("http://localhost:8080/saveComponent",
             {
                 name: this.state.productName,
                 brand: this.state.productBrand,
                 details: this.state.productDetails,
                 price: this.state.productPrice,
-                productType: this.state.productType,
+                typeOfComponent: this.state.productType,
                 imgUris: this.state.imgUris.toString()
             }, {
                 headers: {
@@ -110,8 +110,20 @@ class newComponent extends Component {
                         <label htmlFor="exampleFormControlInput1">Termék típusa</label>
                         <select name="productType" onChange={this.onChangeProductType}>
                             <option value="none">None</option>
-                            <option value="bicycle">Kerékpár</option>
-                            <option value="component">Alkatrész</option>
+                            <option value="break">Fék</option>
+                            <option value="handlebar">Kormány</option>
+                            <option value="stem">Stucni</option>
+                            <option value="seatPost">Nyeregcső</option>
+                            <option value="saddle">Nyereg</option>
+                            <option value="bartape">Bandázs/Markolat</option>
+                            <option value="crankSet">Hajtás</option>
+                            <option value="shifter">Váltó</option>
+                            <option value="groupSet">Szett</option>
+                            <option value="wheel">Kerék</option>
+                            <option value="pedal">Pedál</option>
+                            <option value="frame">Váz</option>
+                            <option value="fork">Villa</option>
+                            <option value="calliper">Fékkar/Fékváltókar</option>
                         </select>
                     </div>
                     <div className="form-group">

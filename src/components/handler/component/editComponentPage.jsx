@@ -35,7 +35,7 @@ class EditComponentPage extends Component {
 
 
     getProductData = () => {
-        axios.get("http://localhost:8080/product/" + localStorage.getItem("productId"))
+        axios.get("http://localhost:8080/component/" + localStorage.getItem("productId"))
             .then((response) => {
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})
@@ -47,19 +47,19 @@ class EditComponentPage extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to="/editProducts"/>
+            return <Redirect to="/editComponents"/>
         }
     };
 
     updateProduct = () => {
         let token = localStorage.getItem("token");
-        axios.post("http://localhost:8080/updateProduct", {
+        axios.post("http://localhost:8080/updateComponent", {
             id: this.state.data.id,
             name: this.state.productName,
             brand: this.state.productBrand,
             details: this.state.productDetails,
             price: this.state.productPrice,
-            productType: this.state.data.productType,
+            componentType: this.state.data.componentType,
             imgUris: this.state.data.imgUris.toString()
         }, {
             headers: {
