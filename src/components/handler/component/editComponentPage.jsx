@@ -14,7 +14,8 @@ class EditComponentPage extends Component {
         productBrand: "",
         productDetails: "",
         productPrice: "",
-        redirect: false
+        redirect: false,
+        componentType: ""
     };
 
     productNameOnChange = event => {
@@ -59,7 +60,7 @@ class EditComponentPage extends Component {
             brand: this.state.productBrand,
             details: this.state.productDetails,
             price: this.state.productPrice,
-            componentType: this.state.data.componentType,
+            typeOfComponent: this.state.data.typeOfComponent,
             imgUris: this.state.data.imgUris.toString()
         }, {
             headers: {
