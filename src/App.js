@@ -9,6 +9,7 @@ import EditBicyclePage from "./components/handler/bicycle/editBicyclePage";
 import newComponent from "./components/handler/component/newComponent";
 import editComponents from "./components/handler/component/editComponents";
 import EditComponentPage from "./components/handler/component/editComponentPage";
+import MainPage from "./components/mainPage";
 
 class App extends Component {
 
@@ -28,6 +29,7 @@ class App extends Component {
                                 <Route path="/newComponent" component={newComponent}/>
                                 <Route path="/editComponents" component={editComponents}/>
                                 <Route path="/editComponent" component={EditComponentPage}/>
+                                <Route path="/" component={MainPage}/>
                             </Switch>
                         </BrowserRouter>
                     </div>
