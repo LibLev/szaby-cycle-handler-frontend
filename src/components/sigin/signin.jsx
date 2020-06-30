@@ -14,12 +14,10 @@ class Signin extends Component {
 
     onUsernameChange = (event) => {
         this.setState({username: event.target.value});
-        console.log(this.state.username);
     };
 
     onPasswordChange = (event) => {
         this.setState({password: event.target.value});
-        console.log(this.state.password);
     };
 
     renderRedirect = () => {
