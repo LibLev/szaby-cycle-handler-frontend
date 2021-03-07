@@ -51,7 +51,8 @@ class newComponent extends Component {
     };
 
     fileUploadHandler = async () => {
-        let token = localStorage.getItem("token");
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         await axios.post("http://localhost:8080/uploadMultipleFiles",
             this.state.selectedFiles,
             {
@@ -72,7 +73,8 @@ class newComponent extends Component {
     };
 
     saveProduct = async () => {
-        let token = localStorage.getItem("token");
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         await axios.post("http://localhost:8080/saveComponent",
             {
                 name: this.state.productName,

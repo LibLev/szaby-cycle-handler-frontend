@@ -13,7 +13,8 @@ class EditComponentCard extends Component {
     };
 
     deleteProduct = () => {
-        let token = localStorage.getItem("token");
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         axios.delete("http://localhost:8080/deleteComponent/" + this.props.data.id, {
             headers: {
                 Authorization: `Bearer ${token}`,

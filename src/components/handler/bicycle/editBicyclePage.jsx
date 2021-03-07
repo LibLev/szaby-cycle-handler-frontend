@@ -118,7 +118,8 @@ class EditBicyclePage extends Component {
     };
 
     updateProduct = () => {
-        let token = localStorage.getItem("token");
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         axios.post("http://localhost:8080/updateBicycle", {
             id: this.state.data.id,
             name: this.state.name,
@@ -163,7 +164,7 @@ class EditBicyclePage extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={`http://localhost:8080/downloadFile/${this.state.data.imgUris[i]}`}
+                        src={`http://localhost:8080/image/download/${this.state.data.id}/${i}`}
                         alt="Third slide"
                     />
                     <Carousel.Caption/>

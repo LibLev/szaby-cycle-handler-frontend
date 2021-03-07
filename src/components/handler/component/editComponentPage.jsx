@@ -53,7 +53,8 @@ class EditComponentPage extends Component {
     };
 
     updateProduct = () => {
-        let token = localStorage.getItem("token");
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         axios.post("http://localhost:8080/updateComponent", {
             id: this.state.data.id,
             name: this.state.productName,

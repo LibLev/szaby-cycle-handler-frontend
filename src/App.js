@@ -13,11 +13,10 @@ import MainPage from "./components/mainPage";
 
 class App extends Component {
 
-
     render() {
         return (
             <div>
-                {localStorage.getItem("token") ? (
+                {sessionStorage.getItem("token") ? (
                 <div>
                     <NavBar/>
                     <div className="container-md" style={{marginTop: "30px"}}>

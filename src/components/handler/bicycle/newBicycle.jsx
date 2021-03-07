@@ -24,6 +24,7 @@ class NewBicycle extends Component {
         details: "",
         price: "",
         typeOfBicycle: "",
+        bicycleId: "",
         selectedFiles: null,
         imgUris: [],
         redirect: false
@@ -102,40 +103,6 @@ class NewBicycle extends Component {
         console.log(this.state.productType);
     };
 
-    fileSelectedHandler = event => {
-        console.log(localStorage.getItem("token"));
-        let files = event.target.files;
-        const formData = new FormData;
-        const names = [];
-        for (let i = 0; i < files.length; i++) {
-            formData.append("images", files[i], files[i].name);
-            names.push(files[i].name);
-        }
-        this.setState({selectedFiles: formData});
-        this.setState({imgUris: names})
-    };
-
-    fileUploadHandler = async () => {
-        let token = localStorage.getItem("token");
-        await axios.post("http://localhost:8080/uploadMultipleFiles",
-            this.state.selectedFiles,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            }
-        ).then(resp => {
-            console.log(resp);
-            console.log(this.state.imgUris)
-        })
-    };
-
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to="/editBicycles"/>
-        }
-    };
-
     saveProduct = async () => {
         let token = localStorage.getItem("token");
         await axios.post("http://localhost:8080/saveBicycle",
@@ -167,11 +134,48 @@ class NewBicycle extends Component {
             .then(console.log(this.state))
             .then(resp => {
                 console.log(resp);
-                this.setState({redirect: true})
+                this.setState({bicycleId:resp.data.id})
             })
             .catch(e =>{
                 console.log(e.message)
             });
+    };
+
+    fileSelectedHandler = event => {
+        console.log(localStorage.getItem("token"));
+        let files = event.target.files;
+        const formData = new FormData;
+        //const names = [];
+        for (let i = 0; i < files.length; i++) {
+            formData.append("files", files[i]);
+            //names.push(files[i].name);
+        }
+        this.setState({selectedFiles: formData});
+        //this.setState({imgUris: names})
+    };
+
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to="/editBicycles"/>
+        }
+    };
+
+    fileUploadHandler = async () => {
+        //let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
+        await axios.post(`http://localhost:8080/upload-multiple-picture/` + this.state.bicycleId,
+            this.state.selectedFiles,
+            {
+                headers: {
+                    "Authorization" : `Bearer ${token}`,
+                    "Content-Type" : "multipart/form-data"
+                },
+            }
+        ).then(resp => {
+            console.log(resp);
+            console.log(this.state.imgUris)
+            this.setState({redirect: true})
+        })
     };
 
     render() {
@@ -179,14 +183,6 @@ class NewBicycle extends Component {
             <div>
                 {this.renderRedirect()}
                 <div className="container">
-                    <div className="form-group">
-                        <div>
-                            <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
-                            <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
-                                   onChange={this.fileSelectedHandler}/>
-                        </div>
-                        <button onClick={this.fileUploadHandler}>Képek feltöltése</button>
-                    </div>
                     <div className="form-group">
                         <label htmlFor="exampleFormControlInput1">Kerékpár típusa</label>
                         <select name="productType" onChange={this.onChangeProductType}>
@@ -285,8 +281,16 @@ class NewBicycle extends Component {
                         <input type="text" className="form-control" id="exampleFormControlInput1"
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
-                    <button className="btn btn-secondary" onClick={this.saveProduct}>Mentés</button>
                 </div>
+                <button className="btn btn-secondary" onClick={this.saveProduct}>Mentés</button>
+                <div className="form-group">
+                    <div>
+                        <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
+                        <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
+                               onChange={this.fileSelectedHandler}/>
+                    </div>
+                </div>
+                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
             </div>
         )
     }
