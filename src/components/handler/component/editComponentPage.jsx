@@ -36,7 +36,7 @@ class EditComponentPage extends Component {
 
 
     getProductData = () => {
-        axios.get("http://localhost:8080/component/" + sessionStorage.getItem("productId"))
+        axios.get("/component/" + sessionStorage.getItem("productId"))
             .then((response) => {
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})
@@ -54,7 +54,7 @@ class EditComponentPage extends Component {
 
     updateProduct = () => {
         let token = sessionStorage.getItem("token");
-        axios.post("http://localhost:8080/updateComponent", {
+        axios.post("/updateComponent", {
             id: this.state.data.id,
             name: this.state.productName,
             brand: this.state.productBrand,
@@ -85,7 +85,7 @@ class EditComponentPage extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={`http://localhost:8080/component/image/download/${this.state.data.id}/${i}`}
+                        src={`/component/image/download/${this.state.data.id}/${i}`}
                         alt="Third slide"
                     />
                     <Carousel.Caption/>

@@ -46,7 +46,7 @@ class newComponent extends Component {
 
     saveProduct = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post("http://localhost:8080/saveComponent",
+        await axios.post("/saveComponent",
             {
                 name: this.state.productName,
                 brand: this.state.productBrand,
@@ -77,7 +77,7 @@ class newComponent extends Component {
 
     fileUploadHandler = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post(`http://localhost:8080/component/upload-multiple-picture/` + this.state.productId,
+        await axios.post(`/component/upload-multiple-picture/` + this.state.productId,
             this.state.selectedFiles,
             {
                 headers: {

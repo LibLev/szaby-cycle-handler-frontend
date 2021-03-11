@@ -12,7 +12,7 @@ class EditBicycles extends Component {
 
     getProducts = () => {
         axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-        axios.get(`http://localhost:8080/get-all-bicycle`,)
+        axios.get(`/get-all-bicycle`,)
             .then((response) => {
                     console.log(response.data);
                     this.setState({data: response.data})

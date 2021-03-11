@@ -14,7 +14,7 @@ class EditComponentCard extends Component {
 
     deleteProduct = () => {
         let token = sessionStorage.getItem("token");
-        axios.delete("http://localhost:8080/deleteComponent/" + this.props.data.id, {
+        axios.delete("/deleteComponent/" + this.props.data.id, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -44,7 +44,7 @@ class EditComponentCard extends Component {
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
-                             src={`http://localhost:8080/component/image/download/${this.props.data.id}/0`}
+                             src={`/component/image/download/${this.props.data.id}/0`}
                              alt="Card image cap" style={{height: "70%"}}/>
                         <div className="card-body">
                             <p className="card-text"> {this.props.data.name}</p>
