@@ -14,7 +14,8 @@ class newComponent extends Component {
         selectedFiles: null,
         imgUris: [],
         redirect: false,
-        productId: ""
+        productId: "",
+        progress: 0
     };
 
     productNameOnChange = event => {
@@ -80,6 +81,10 @@ class newComponent extends Component {
         await axios.post(`/component/upload-multiple-picture/` + this.state.productId,
             this.state.selectedFiles,
             {
+                onUploadProgress: progressEvent => {
+                    this.setState({progress: Math.round(progressEvent.loaded / progressEvent.total * 100)});
+                    console.log("Upload progress" + this.state.progress + "%");
+                },
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
@@ -142,7 +147,11 @@ class newComponent extends Component {
                             <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
                                    onChange={this.fileSelectedHandler}/>
                         </div>
-                        <button onClick={this.fileUploadHandler}>Képek feltöltése</button>
+                    </div>
+                    <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
+                    <div className="progress">
+                        <div className="progress-bar" role="progressbar" style={{width: this.state.progress+"%"}} aria-valuenow={this.state.progress}
+                             aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                 </div>
             </div>

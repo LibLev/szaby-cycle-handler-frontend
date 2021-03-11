@@ -27,6 +27,7 @@ class NewBicycle extends Component {
         bicycleId: "",
         selectedFiles: null,
         imgUris: [],
+        progress: 0,
         redirect: false
     };
 
@@ -158,7 +159,10 @@ class NewBicycle extends Component {
         let token = sessionStorage.getItem("token");
         await axios.post(`/bicycle/upload-multiple-picture/` + this.state.bicycleId,
             this.state.selectedFiles,
-            {
+            {onUploadProgress: progressEvent => {
+                    this.setState({progress: Math.round(progressEvent.loaded / progressEvent.total * 100)});
+                    console.log("Upload progress" + this.state.progress + "%");
+                },
                 headers: {
                     "Authorization" : `Bearer ${token}`,
                     "Content-Type" : "multipart/form-data"
@@ -283,6 +287,10 @@ class NewBicycle extends Component {
                     </div>
                 </div>
                 <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
+                <div className="progress">
+                    <div className="progress-bar" role="progressbar" style={{width: this.state.progress+"%"}} aria-valuenow={this.state.progress}
+                         aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
             </div>
         )
     }
