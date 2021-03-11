@@ -104,7 +104,7 @@ class NewBicycle extends Component {
     };
 
     saveProduct = async () => {
-        let token = localStorage.getItem("token");
+        let token = sessionStorage.getItem("token");
         await axios.post("http://localhost:8080/saveBicycle",
             {
                 name: this.state.name,
@@ -125,13 +125,11 @@ class NewBicycle extends Component {
                 barTape:this.state.barTape,
                 pedal:this.state.pedal,
                 wheels:this.state.wheels,
-                imgUris: this.state.imgUris.toString()
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             })
-            .then(console.log(this.state))
             .then(resp => {
                 console.log(resp);
                 this.setState({bicycleId:resp.data.id})
@@ -142,16 +140,12 @@ class NewBicycle extends Component {
     };
 
     fileSelectedHandler = event => {
-        console.log(localStorage.getItem("token"));
         let files = event.target.files;
         const formData = new FormData;
-        //const names = [];
         for (let i = 0; i < files.length; i++) {
             formData.append("files", files[i]);
-            //names.push(files[i].name);
         }
         this.setState({selectedFiles: formData});
-        //this.setState({imgUris: names})
     };
 
     renderRedirect = () => {
@@ -161,9 +155,8 @@ class NewBicycle extends Component {
     };
 
     fileUploadHandler = async () => {
-        //let token = localStorage.getItem("token");
         let token = sessionStorage.getItem("token");
-        await axios.post(`http://localhost:8080/upload-multiple-picture/` + this.state.bicycleId,
+        await axios.post(`http://localhost:8080/bicycle/upload-multiple-picture/` + this.state.bicycleId,
             this.state.selectedFiles,
             {
                 headers: {
@@ -173,8 +166,7 @@ class NewBicycle extends Component {
             }
         ).then(resp => {
             console.log(resp);
-            console.log(this.state.imgUris)
-            this.setState({redirect: true})
+            this.setState({redirect: true});
         })
     };
 
