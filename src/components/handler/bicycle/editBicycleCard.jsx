@@ -5,7 +5,6 @@ import {faPen} from '@fortawesome/free-solid-svg-icons'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import {Redirect} from "react-router";
-import {forEach} from "react-bootstrap/cjs/ElementChildren";
 
 class EditBicycleCard extends Component {
 
@@ -36,7 +35,7 @@ class EditBicycleCard extends Component {
 
     renderRedirect2() {
         if (this.state.redirect2) {
-            window.location.reload();
+            setTimeout(function (){window.location.reload()}.bind(this), 3000);
         }
     }
 

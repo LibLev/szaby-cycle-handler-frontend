@@ -9,7 +9,8 @@ import {Redirect} from "react-router";
 class EditComponentCard extends Component {
 
     state = {
-        redirect: false
+        redirect: false,
+        redirect2: false
     };
 
     getIndexOfMainPic = () => {
@@ -34,7 +35,7 @@ class EditComponentCard extends Component {
         }).catch((e) => {
             console.log(e.message)
         });
-        window.location.reload()
+        this.setState({redirect2 : true})
     };
 
     renderRedirect = () => {
@@ -42,6 +43,12 @@ class EditComponentCard extends Component {
             return <Redirect to="/editComponent"/>
         }
     };
+
+    renderRedirect2() {
+        if (this.state.redirect2) {
+            setTimeout(function (){window.location.reload()}.bind(this), 3000);
+        }
+    }
 
     openProductPage = () => {
         localStorage.setItem("productId", this.props.data.id);
@@ -52,6 +59,7 @@ class EditComponentCard extends Component {
         return (
             <div>
                 {this.renderRedirect()}
+                {this.renderRedirect2()}
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
