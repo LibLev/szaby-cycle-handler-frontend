@@ -101,7 +101,7 @@ class EditBicyclePage extends Component {
 
 
     getProductData = () => {
-        axios.get("/bicycle/" + sessionStorage.getItem("productId"))
+        axios.get("/bicycle/" + localStorage.getItem("productId"))
             .then((response) => {
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})

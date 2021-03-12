@@ -36,7 +36,7 @@ class EditComponentPage extends Component {
 
 
     getProductData = () => {
-        axios.get("/component/" + sessionStorage.getItem("productId"))
+        axios.get("/component/" + localStorage.getItem("productId"))
             .then((response) => {
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})

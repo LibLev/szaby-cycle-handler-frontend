@@ -9,18 +9,18 @@ class NewBicycle extends Component {
         name: "",
         brand: "",
         frame: "",
-        fork:"",
-        groupSet:"",
-        shifters:"",
-        callipers:"",
-        breaks:"",
-        seatPost:"",
-        saddle:"",
-        stem:"",
-        handleBar:"",
-        barTape:"",
-        pedal:"",
-        wheels:"",
+        fork: "",
+        groupSet: "",
+        shifters: "",
+        callipers: "",
+        breaks: "",
+        seatPost: "",
+        saddle: "",
+        stem: "",
+        handleBar: "",
+        barTape: "",
+        pedal: "",
+        wheels: "",
         details: "",
         price: "",
         typeOfBicycle: "",
@@ -28,7 +28,10 @@ class NewBicycle extends Component {
         selectedFiles: null,
         imgUris: [],
         progress: 0,
-        redirect: false
+        redirect: false,
+        previewImages: [],
+        temporary: [],
+        mainImage: ""
     };
 
     frameOnChange = event => {
@@ -104,6 +107,12 @@ class NewBicycle extends Component {
         console.log(this.state.productType);
     };
 
+    onChangeCheckBox = event => {
+        let name = this.state.temporary[event.target.id].name.toString()
+        this.setState({mainImage: name})
+        console.log(this.state.mainImage)
+    }
+
     saveProduct = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post("/saveBicycle",
@@ -115,17 +124,17 @@ class NewBicycle extends Component {
                 typeOfBicycle: this.state.typeOfBicycle,
                 frame: this.state.frame,
                 fork: this.state.fork,
-                groupSet:this.state.groupSet,
-                shifters:this.state.shifters,
-                callipers:this.state.callipers,
-                breaks:this.state.breaks,
-                seatPost:this.state.seatPost,
-                saddle:this.state.saddle,
-                stem:this.state.stem,
-                handlebar:this.state.handleBar,
-                barTape:this.state.barTape,
-                pedal:this.state.pedal,
-                wheels:this.state.wheels,
+                groupSet: this.state.groupSet,
+                shifters: this.state.shifters,
+                callipers: this.state.callipers,
+                breaks: this.state.breaks,
+                seatPost: this.state.seatPost,
+                saddle: this.state.saddle,
+                stem: this.state.stem,
+                handlebar: this.state.handleBar,
+                barTape: this.state.barTape,
+                pedal: this.state.pedal,
+                wheels: this.state.wheels,
             }, {
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -133,20 +142,26 @@ class NewBicycle extends Component {
             })
             .then(resp => {
                 console.log(resp);
-                this.setState({bicycleId:resp.data.id})
+                this.setState({bicycleId: resp.data.id})
             })
-            .catch(e =>{
+            .catch(e => {
                 console.log(e.message)
             });
     };
 
     fileSelectedHandler = event => {
         let files = event.target.files;
+        this.setState({temporary: files})
+        let images = [];
         const formData = new FormData;
+        for (let i = 0; i < event.target.files.length; i++) {
+            images.push(URL.createObjectURL(event.target.files[i]))
+        }
         for (let i = 0; i < files.length; i++) {
             formData.append("files", files[i]);
         }
-        this.setState({selectedFiles: formData});
+        this.setState({selectedFiles: formData, previewImages: images});
+        console.log(this.state.mainImage)
     };
 
     renderRedirect = () => {
@@ -159,18 +174,36 @@ class NewBicycle extends Component {
         let token = sessionStorage.getItem("token");
         await axios.post(`/bicycle/upload-multiple-picture/` + this.state.bicycleId,
             this.state.selectedFiles,
-            {onUploadProgress: progressEvent => {
+            {
+                onUploadProgress: progressEvent => {
                     this.setState({progress: Math.round(progressEvent.loaded / progressEvent.total * 100)});
                     console.log("Upload progress" + this.state.progress + "%");
                 },
                 headers: {
-                    "Authorization" : `Bearer ${token}`,
-                    "Content-Type" : "multipart/form-data"
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data"
                 },
             }
         ).then(resp => {
             console.log(resp);
-            this.setState({redirect: true});
+        }).catch(e => {
+            console.log(e.message)
+        })
+        await axios.post(`bicycle/set-main-pic`,
+            {
+                id: this.state.bicycleId,
+                mainImage: this.state.mainImage
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(resp => {
+                console.log(resp);
+                this.setState({redirect: true});
+            }
+        ).catch(e => {
+            console.log(e.message)
         })
     };
 
@@ -285,11 +318,35 @@ class NewBicycle extends Component {
                         <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
                                onChange={this.fileSelectedHandler}/>
                     </div>
+
+                    <div className="row">
+                        {this.state.previewImages && (
+                            <div className="row">
+                                {this.state.previewImages.map((img, i) => {
+                                    return (
+                                        <div className="col-sm-4" style={{marginTop: "20px"}}>
+                                            <div className="card" style={{width: "18rem"}}>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio"
+                                                           name="flexRadioDefault"
+                                                           id={i} onChange={this.onChangeCheckBox} value={img}/>
+                                                </div>
+                                                <img className="preview card-body" src={img} alt={"image-" + i}
+                                                     key={i}/>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </div>
+
                 </div>
                 <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
                 <div className="progress">
-                    <div className="progress-bar" role="progressbar" style={{width: this.state.progress+"%"}} aria-valuenow={this.state.progress}
-                         aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="progress-bar" role="progressbar" style={{width: this.state.progress + "%"}}
+                         aria-valuenow={this.state.progress}
+                         aria-valuemin="0" aria-valuemax="100"/>
                 </div>
             </div>
         )

@@ -5,11 +5,13 @@ import {faPen} from '@fortawesome/free-solid-svg-icons'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 import {Redirect} from "react-router";
+import {forEach} from "react-bootstrap/cjs/ElementChildren";
 
 class EditBicycleCard extends Component {
 
     state = {
-        redirect: false
+        redirect: false,
+        redirect2: false
     };
 
     deleteProduct = () => {
@@ -23,7 +25,7 @@ class EditBicycleCard extends Component {
         }).catch((e) => {
             console.log(e.message)
         });
-        window.location.reload()
+        this.setState({redirect2 : true})
     };
 
     renderRedirect = () => {
@@ -32,19 +34,37 @@ class EditBicycleCard extends Component {
         }
     };
 
+    renderRedirect2() {
+        if (this.state.redirect2) {
+            window.location.reload();
+        }
+    }
+
     openProductPage = () => {
         localStorage.setItem("productId", this.props.data.id);
         this.setState({redirect: true})
     };
 
+    getIndexOfMainPic = () => {
+        let result = 0;
+        for (let i = 0; i < this.props.data.imgUris.length; i++) {
+            if (this.props.data.imgUris[i] === this.props.data.imgUri){
+                result = i;
+                break
+            }
+        }
+        return result;
+    }
+
     render() {
         return (
             <div>
                 {this.renderRedirect()}
+                {this.renderRedirect2()}
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
-                             src={`/bicycle/image/download/${this.props.data.id}/0`}
+                             src={`/bicycle/image/download/${this.props.data.id}/${this.getIndexOfMainPic()}`}
                              alt="Card image cap" style={{height: "70%"}}/>
                         <div className="card-body">
                             <p className="card-text"> {this.props.data.name}</p>
@@ -58,7 +78,6 @@ class EditBicycleCard extends Component {
             </div>
         )
     }
-
 }
 
 export default EditBicycleCard;

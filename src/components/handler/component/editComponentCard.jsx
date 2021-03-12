@@ -12,6 +12,17 @@ class EditComponentCard extends Component {
         redirect: false
     };
 
+    getIndexOfMainPic = () => {
+        let result = 0;
+        for (let i = 0; i < this.props.data.imgUris.length; i++) {
+            if (this.props.data.imgUris[i] === this.props.data.imgUri){
+                result = i;
+                break
+            }
+        }
+        return result;
+    }
+
     deleteProduct = () => {
         let token = sessionStorage.getItem("token");
         axios.delete("/deleteComponent/" + this.props.data.id, {
@@ -44,7 +55,7 @@ class EditComponentCard extends Component {
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
-                             src={`/component/image/download/${this.props.data.id}/0`}
+                             src={`/component/image/download/${this.props.data.id}/${this.getIndexOfMainPic()}`}
                              alt="Card image cap" style={{height: "70%"}}/>
                         <div className="card-body">
                             <p className="card-text"> {this.props.data.name}</p>

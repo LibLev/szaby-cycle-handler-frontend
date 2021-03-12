@@ -46,6 +46,13 @@ class Signin extends Component {
 
     };
 
+    _handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            console.log('do validate');
+            this.login()
+        }
+    }
+
     render() {
         return (
             <div>{this.renderRedirect()}
@@ -53,7 +60,7 @@ class Signin extends Component {
                      style={{marginLeft: "auto", marginRight: "auto", marginTop: "5%", width: "28rem"}}>
                     <div className="card">
                         <div className="card-body">
-                            <form>
+                            <form onKeyDown={this._handleKeyDown}>
                                 <div className="form-group">
                                     <label htmlFor="exampleInputEmail1">Username</label>
                                     <input type="text" className="form-control" id="exampleInputEmail1"

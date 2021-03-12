@@ -15,7 +15,10 @@ class newComponent extends Component {
         imgUris: [],
         redirect: false,
         productId: "",
-        progress: 0
+        progress: 0,
+        previewImages: [],
+        temporary: [],
+        mainImage: ""
     };
 
     productNameOnChange = event => {
@@ -67,13 +70,25 @@ class newComponent extends Component {
             });
     };
 
+    onChangeCheckBox = event => {
+        let name = this.state.temporary[event.target.id].name.toString()
+        this.setState({mainImage: name})
+        console.log(this.state.mainImage)
+    }
+
     fileSelectedHandler = event => {
         let files = event.target.files;
+        this.setState({temporary: files})
+        let images = [];
         const formData = new FormData;
+        for (let i = 0; i < event.target.files.length; i++) {
+            images.push(URL.createObjectURL(event.target.files[i]))
+        }
         for (let i = 0; i < files.length; i++) {
             formData.append("files", files[i]);
         }
-        this.setState({selectedFiles: formData});
+        this.setState({selectedFiles: formData, previewImages: images});
+        console.log(this.state.mainImage)
     };
 
     fileUploadHandler = async () => {
@@ -91,7 +106,22 @@ class newComponent extends Component {
             }
         ).then(resp => {
             console.log(resp);
-            this.setState({redirect: true});
+        })
+        await axios.post(`component/set-main-pic`,
+            {
+                id: this.state.productId,
+                mainImage: this.state.mainImage
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(resp => {
+                console.log(resp);
+                this.setState({redirect: true});
+            }
+        ).catch(e => {
+            console.log(e.message)
         })
     };
 
@@ -148,11 +178,34 @@ class newComponent extends Component {
                                    onChange={this.fileSelectedHandler}/>
                         </div>
                     </div>
-                    <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
-                    <div className="progress">
-                        <div className="progress-bar" role="progressbar" style={{width: this.state.progress+"%"}} aria-valuenow={this.state.progress}
-                             aria-valuemin="0" aria-valuemax="100"></div>
+                    <div className="row">
+                        {this.state.previewImages && (
+                            <div className="row">
+                                {this.state.previewImages.map((img, i) => {
+                                    return (
+                                        <div className="col-sm-4" style={{marginTop: "20px"}}>
+                                            <div className="card" style={{width: "18rem"}}>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio"
+                                                           name="flexRadioDefault"
+                                                           id={i} onChange={this.onChangeCheckBox} value={img}/>
+                                                </div>
+                                                <img className="preview card-body" src={img} alt={"image-" + i}
+                                                     key={i}/>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        )}
                     </div>
+
+                </div>
+                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
+                <div className="progress">
+                    <div className="progress-bar" role="progressbar" style={{width: this.state.progress + "%"}}
+                         aria-valuenow={this.state.progress}
+                         aria-valuemin="0" aria-valuemax="100"/>
                 </div>
             </div>
         )
