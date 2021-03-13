@@ -19,7 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="Switch has been deleted">
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="redirect has been put back with window reload in signin.jsx">
       <change beforePath="$PROJECT_DIR$/src/components/sigin/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sigin/signin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -92,7 +92,7 @@
       <workItem from="1615458402834" duration="4468000" />
       <workItem from="1615533818017" duration="25203000" />
       <workItem from="1615636061055" duration="898000" />
-      <workItem from="1615636999216" duration="5074000" />
+      <workItem from="1615636999216" duration="5441000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -192,7 +192,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615641942488</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="redirect has been deleted from signin.jsx">
+      <created>1615642132234</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1615642132234</updated>
+    </task>
+    <task id="LOCAL-00016" summary="redirect has been put back with window reload in signin.jsx">
+      <created>1615642334448</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1615642334448</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -226,6 +240,8 @@
     <MESSAGE value="BrowseRouter has been changed simple Router" />
     <MESSAGE value="_redirects has been added" />
     <MESSAGE value="Switch has been deleted" />
-    <option name="LAST_COMMIT_MESSAGE" value="Switch has been deleted" />
+    <MESSAGE value="redirect has been deleted from signin.jsx" />
+    <MESSAGE value="redirect has been put back with window reload in signin.jsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="redirect has been put back with window reload in signin.jsx" />
   </component>
 </project>
