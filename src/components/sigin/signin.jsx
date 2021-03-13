@@ -9,7 +9,7 @@ class Signin extends Component {
     state = {
         username: "",
         password: "",
-        redirect: false
+        //redirect: false
     };
 
     onUsernameChange = (event) => {
@@ -22,11 +22,11 @@ class Signin extends Component {
         console.log(this.state.password);
     };
 
-    renderRedirect = () => {
+/*    renderRedirect = () => {
         if (this.state.redirect) {
             return <Redirect to="/"/>
         }
-    };
+    };*/
 
 
     login = () => {
@@ -38,7 +38,7 @@ class Signin extends Component {
         ).then(resp => {
             console.log(resp.data);
             sessionStorage.setItem("token", resp.data.token);
-            this.setState({redirect: true});
+            //this.setState({redirect: true});
         }).catch((e) => {
             console.log(e.message)
         })
@@ -54,7 +54,7 @@ class Signin extends Component {
 
     render() {
         return (
-            <div>{this.renderRedirect()}
+            <div>
                 <div className="container"
                      style={{marginLeft: "auto", marginRight: "auto", marginTop: "5%", width: "28rem"}}>
                     <div className="card">
