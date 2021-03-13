@@ -27,7 +27,7 @@ class App extends Component {
                                     <Route path="/newComponent" component={newComponent}/>
                                     <Route path="/editComponents" component={editComponents}/>
                                     <Route path="/editComponent" component={EditComponentPage}/>
-                                    <Route path="/" component={MainPage}/>
+                                    <Route path="/mainPage" component={MainPage}/>
                                 </Router>
                             </div>
                         </div>) :
