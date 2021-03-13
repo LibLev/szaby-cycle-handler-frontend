@@ -38,7 +38,7 @@ class Signin extends Component {
         ).then(resp => {
             console.log(resp.data);
             sessionStorage.setItem("token", resp.data.token);
-            //this.setState({redirect: true});
+            this.setState({redirect: true});
         }).catch((e) => {
             console.log(e.message)
         })
