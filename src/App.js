@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from "./components/navbar/navbar";
-import {Router, Switch, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route} from "react-router-dom";
 import Signin from "./components/sigin/signin";
 import NewBicycle from "./components/handler/bicycle/newBicycle";
 import EditBicycles from "./components/handler/bicycle/editBicycles";
@@ -17,23 +17,21 @@ class App extends Component {
         return (
             <div>
                 {sessionStorage.getItem("token") ? (
-                <div>
-                    <NavBar/>
-                    <div className="container-md" style={{marginTop: "30px"}}>
-                        <Router>
-                            <Switch>
-                                <Route path="/newBicycle" component={NewBicycle}/>
-                                <Route path="/editBicycles" component={EditBicycles}/>
-                                <Route path="/editBicycle" component={EditBicyclePage}/>
-                                <Route path="/newComponent" component={newComponent}/>
-                                <Route path="/editComponents" component={editComponents}/>
-                                <Route path="/editComponent" component={EditComponentPage}/>
-                                <Route path="/" component={MainPage}/>
-                            </Switch>
-                        </Router>
-                    </div>
-                </div>) :
-                    (<Signin />)}
+                        <div>
+                            <NavBar/>
+                            <div className="container-md" style={{marginTop: "30px"}}>
+                                <Router>
+                                    <Route path="/newBicycle" component={NewBicycle}/>
+                                    <Route path="/editBicycles" component={EditBicycles}/>
+                                    <Route path="/editBicycle" component={EditBicyclePage}/>
+                                    <Route path="/newComponent" component={newComponent}/>
+                                    <Route path="/editComponents" component={editComponents}/>
+                                    <Route path="/editComponent" component={EditComponentPage}/>
+                                    <Route path="/" component={MainPage}/>
+                                </Router>
+                            </div>
+                        </div>) :
+                    (<Signin/>)}
             </div>
         );
     }
