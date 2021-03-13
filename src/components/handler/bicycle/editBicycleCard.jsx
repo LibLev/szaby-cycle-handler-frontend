@@ -15,7 +15,7 @@ class EditBicycleCard extends Component {
 
     deleteProduct = () => {
         let token = sessionStorage.getItem("token");
-        axios.delete("/deleteBicycle/" + this.props.data.id, {
+        axios.delete("https://szabicycle.herokuapp.com/deleteBicycle/" + this.props.data.id, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -63,7 +63,7 @@ class EditBicycleCard extends Component {
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
-                             src={`/bicycle/image/download/${this.props.data.id}/${this.getIndexOfMainPic()}`}
+                             src={`https://szabicycle.herokuapp.com/bicycle/image/download/${this.props.data.id}/${this.getIndexOfMainPic()}`}
                              alt="Card image cap" style={{height: "70%"}}/>
                         <div className="card-body">
                             <p className="card-text"> {this.props.data.name}</p>

@@ -115,7 +115,7 @@ class NewBicycle extends Component {
 
     saveProduct = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post("/saveBicycle",
+        await axios.post("https://szabicycle.herokuapp.com/saveBicycle",
             {
                 name: this.state.name,
                 brand: this.state.brand,
@@ -172,7 +172,7 @@ class NewBicycle extends Component {
 
     fileUploadHandler = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post(`/bicycle/upload-multiple-picture/` + this.state.bicycleId,
+        await axios.post(`https://szabicycle.herokuapp.com/bicycle/upload-multiple-picture/` + this.state.bicycleId,
             this.state.selectedFiles,
             {
                 onUploadProgress: progressEvent => {
@@ -189,7 +189,7 @@ class NewBicycle extends Component {
         }).catch(e => {
             console.log(e.message)
         })
-        await axios.post(`bicycle/set-main-pic`,
+        await axios.post(`https://szabicycle.herokuapp.combicycle/set-main-pic`,
             {
                 id: this.state.bicycleId,
                 mainImage: this.state.mainImage

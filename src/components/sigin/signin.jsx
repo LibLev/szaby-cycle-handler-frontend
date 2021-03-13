@@ -29,7 +29,7 @@ class Signin extends Component {
 
 
     login = () => {
-        axios.post(`/auth/signin`,
+        axios.post(`https://szabicycle.herokuapp.com/auth/signin`,
             {
                 username: this.state.username,
                 password: this.state.password

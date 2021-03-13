@@ -50,7 +50,7 @@ class newComponent extends Component {
 
     saveProduct = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post("/saveComponent",
+        await axios.post("https://szabicycle.herokuapp.com/saveComponent",
             {
                 name: this.state.productName,
                 brand: this.state.productBrand,
@@ -93,7 +93,7 @@ class newComponent extends Component {
 
     fileUploadHandler = async () => {
         let token = sessionStorage.getItem("token");
-        await axios.post(`/component/upload-multiple-picture/` + this.state.productId,
+        await axios.post(`https://szabicycle.herokuapp.com/component/upload-multiple-picture/` + this.state.productId,
             this.state.selectedFiles,
             {
                 onUploadProgress: progressEvent => {
@@ -107,7 +107,7 @@ class newComponent extends Component {
         ).then(resp => {
             console.log(resp);
         })
-        await axios.post(`component/set-main-pic`,
+        await axios.post(`https://szabicycle.herokuapp.comcomponent/set-main-pic`,
             {
                 id: this.state.productId,
                 mainImage: this.state.mainImage
