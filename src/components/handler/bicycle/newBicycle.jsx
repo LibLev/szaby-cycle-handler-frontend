@@ -153,7 +153,7 @@ class NewBicycle extends Component {
         let files = event.target.files;
         this.setState({temporary: files})
         let images = [];
-        const formData = new FormData;
+        const formData = new FormData();
         for (let i = 0; i < event.target.files.length; i++) {
             images.push(URL.createObjectURL(event.target.files[i]))
         }

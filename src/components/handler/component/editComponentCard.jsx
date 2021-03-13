@@ -46,7 +46,7 @@ class EditComponentCard extends Component {
 
     renderRedirect2() {
         if (this.state.redirect2) {
-            setTimeout(function (){window.location.reload()}.bind(this), 3000);
+            setTimeout(function (){window.location.reload()}, 3000);
         }
     }
 

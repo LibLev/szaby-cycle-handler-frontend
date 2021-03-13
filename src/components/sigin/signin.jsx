@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
-import {Redirect} from "react-router";
 
 
 class Signin extends Component {
@@ -38,7 +37,6 @@ class Signin extends Component {
         ).then(resp => {
             console.log(resp.data);
             sessionStorage.setItem("token", resp.data.token);
-            //localStorage.setItem("token", resp.data.token);
             this.setState({redirect: true});
         }).catch((e) => {
             console.log(e.message)
