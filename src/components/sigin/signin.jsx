@@ -30,7 +30,7 @@ class Signin extends Component {
 
 
     login = () => {
-        axios.post(`http://localhost:8080/auth/signin`,
+        axios.post(`/auth/signin`,
             {
                 username: this.state.username,
                 password: this.state.password
