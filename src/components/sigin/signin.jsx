@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
+import {Redirect} from "react-router";
 
 
 class Signin extends Component {
@@ -23,7 +24,7 @@ class Signin extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            window.location = "/editProducts"
+            return <Redirect to="/"/>
         }
     };
 
