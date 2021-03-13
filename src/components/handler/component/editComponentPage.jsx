@@ -14,7 +14,8 @@ class EditComponentPage extends Component {
         productBrand: "",
         productDetails: "",
         productPrice: "",
-        redirect: false
+        redirect: false,
+        componentType: ""
     };
 
     productNameOnChange = event => {
@@ -35,7 +36,7 @@ class EditComponentPage extends Component {
 
 
     getProductData = () => {
-        axios.get("http://localhost:8080/component/" + localStorage.getItem("productId"))
+        axios.get("/component/" + localStorage.getItem("productId"))
             .then((response) => {
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})
@@ -52,14 +53,14 @@ class EditComponentPage extends Component {
     };
 
     updateProduct = () => {
-        let token = localStorage.getItem("token");
-        axios.post("http://localhost:8080/updateComponent", {
+        let token = sessionStorage.getItem("token");
+        axios.post("/updateComponent", {
             id: this.state.data.id,
             name: this.state.productName,
             brand: this.state.productBrand,
             details: this.state.productDetails,
             price: this.state.productPrice,
-            componentType: this.state.data.componentType,
+            typeOfComponent: this.state.data.typeOfComponent,
             imgUris: this.state.data.imgUris.toString()
         }, {
             headers: {
@@ -84,7 +85,7 @@ class EditComponentPage extends Component {
                 <Carousel.Item>
                     <img
                         className="d-block w-100"
-                        src={`http://localhost:8080/downloadFile/${this.state.data.imgUris[i]}`}
+                        src={`/component/image/download/${this.state.data.id}/${i}`}
                         alt="Third slide"
                     />
                     <Carousel.Caption/>

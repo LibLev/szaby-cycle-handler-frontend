@@ -9,12 +9,13 @@ import {Redirect} from "react-router";
 class EditBicycleCard extends Component {
 
     state = {
-        redirect: false
+        redirect: false,
+        redirect2: false
     };
 
     deleteProduct = () => {
-        let token = localStorage.getItem("token");
-        axios.delete("http://localhost:8080/deleteBicycle/" + this.props.data.id, {
+        let token = sessionStorage.getItem("token");
+        axios.delete("/deleteBicycle/" + this.props.data.id, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -23,7 +24,7 @@ class EditBicycleCard extends Component {
         }).catch((e) => {
             console.log(e.message)
         });
-        window.location.reload()
+        this.setState({redirect2 : true})
     };
 
     renderRedirect = () => {
@@ -32,19 +33,37 @@ class EditBicycleCard extends Component {
         }
     };
 
+    renderRedirect2() {
+        if (this.state.redirect2) {
+            setTimeout(function (){window.location.reload()}.bind(this), 3000);
+        }
+    }
+
     openProductPage = () => {
         localStorage.setItem("productId", this.props.data.id);
         this.setState({redirect: true})
     };
 
+    getIndexOfMainPic = () => {
+        let result = 0;
+        for (let i = 0; i < this.props.data.imgUris.length; i++) {
+            if (this.props.data.imgUris[i] === this.props.data.imgUri){
+                result = i;
+                break
+            }
+        }
+        return result;
+    }
+
     render() {
         return (
             <div>
                 {this.renderRedirect()}
+                {this.renderRedirect2()}
                 <div className="col-sm-4" style={{marginTop: "20px"}}>
                     <div className="card" style={{width: "18rem"}}>
                         <img className="card-img-top"
-                             src={`http://localhost:8080/downloadFile/${this.props.data.imgUris[0]}`}
+                             src={`/bicycle/image/download/${this.props.data.id}/${this.getIndexOfMainPic()}`}
                              alt="Card image cap" style={{height: "70%"}}/>
                         <div className="card-body">
                             <p className="card-text"> {this.props.data.name}</p>
@@ -58,7 +77,6 @@ class EditBicycleCard extends Component {
             </div>
         )
     }
-
 }
 
 export default EditBicycleCard;

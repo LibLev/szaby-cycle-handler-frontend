@@ -6,13 +6,14 @@ class NavBar extends Component {
 
     logout = () => {
       localStorage.clear();
+      sessionStorage.clear();
       window.location.reload();
     };
 
     render() {
         return (
             <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark">
-                <Navbar.Brand >SzabiCycle</Navbar.Brand>
+                <Navbar.Brand href="/mainPage">SzabiCycle</Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="mr-auto">

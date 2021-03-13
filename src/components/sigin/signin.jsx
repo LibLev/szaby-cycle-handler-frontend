@@ -37,7 +37,8 @@ class Signin extends Component {
             }
         ).then(resp => {
             console.log(resp.data);
-            localStorage.setItem("token", resp.data.token);
+            sessionStorage.setItem("token", resp.data.token);
+            //localStorage.setItem("token", resp.data.token);
             this.setState({redirect: true});
         }).catch((e) => {
             console.log(e.message)
@@ -45,33 +46,34 @@ class Signin extends Component {
 
     };
 
+    _handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            console.log('do validate');
+            this.login()
+        }
+    }
+
     render() {
         return (
-            <div className="container-md" style={{marginTop: "30px"}}>
-                <div>
-                    {this.renderRedirect()}
-                    <div className="container-sm">
-                        <div className="card text-sm-center" style={{ margin: "0 auto",
-                            float: "none",
-                            marginBottom: "10px"}}>
-                            <div className="card-body">
-                                <form>
-                                    <div className="form-group">
-                                        <label htmlFor="username">Username</label>
-                                        <input type="text" name="username" value={this.state.username}
-                                               onChange={this.onUsernameChange}
-                                               placeholder="username"/>
-                                    </div>
-                                    <div className="form-group">
-                                        <label htmlFor="password">Password</label>
-                                        <input type="password" name="password" value={this.state.password}
-                                               onChange={this.onPasswordChange} placeholder="password"/>
-                                    </div>
-                                </form>
-                                <button type="button" className="btn-primary" onClick={this.login}>
-                                    Login
-                                </button>
-                            </div>
+            <div>{this.renderRedirect()}
+                <div className="container"
+                     style={{marginLeft: "auto", marginRight: "auto", marginTop: "5%", width: "28rem"}}>
+                    <div className="card">
+                        <div className="card-body">
+                            <form onKeyDown={this._handleKeyDown}>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputEmail1">Username</label>
+                                    <input type="text" className="form-control" id="exampleInputEmail1"
+                                           aria-describedby="emailHelp" onChange={this.onUsernameChange}
+                                           value={this.state.username}/>
+                                </div>
+                                <div className="form-group">
+                                    <label htmlFor="exampleInputPassword1">Password</label>
+                                    <input type="password" className="form-control" id="exampleInputPassword1"
+                                           onChange={this.onPasswordChange} value={this.state.password}/>
+                                </div>
+                            </form>
+                            <button className="btn btn-primary" onClick={this.login}>Login</button>
                         </div>
                     </div>
                 </div>
