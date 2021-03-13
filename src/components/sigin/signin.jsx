@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
-import {Redirect} from "react-router";
 
 
 class Signin extends Component {
@@ -9,7 +8,7 @@ class Signin extends Component {
     state = {
         username: "",
         password: "",
-        //redirect: false
+        redirect: false
     };
 
     onUsernameChange = (event) => {
@@ -22,11 +21,11 @@ class Signin extends Component {
         console.log(this.state.password);
     };
 
-/*    renderRedirect = () => {
+    renderRedirect = () => {
         if (this.state.redirect) {
-            return <Redirect to="/"/>
+            setTimeout(function (){window.location.reload()}, 3000);
         }
-    };*/
+    };
 
 
     login = () => {
@@ -54,7 +53,7 @@ class Signin extends Component {
 
     render() {
         return (
-            <div>
+            <div>{this.renderRedirect()}
                 <div className="container"
                      style={{marginLeft: "auto", marginRight: "auto", marginTop: "5%", width: "28rem"}}>
                     <div className="card">
