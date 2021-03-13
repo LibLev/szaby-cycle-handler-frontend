@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from "./components/navbar/navbar";
-import {BrowserRouter, Switch, Route} from "react-router-dom";
+import {Router, Switch, Route} from "react-router-dom";
 import Signin from "./components/sigin/signin";
 import NewBicycle from "./components/handler/bicycle/newBicycle";
 import EditBicycles from "./components/handler/bicycle/editBicycles";
@@ -20,7 +20,7 @@ class App extends Component {
                 <div>
                     <NavBar/>
                     <div className="container-md" style={{marginTop: "30px"}}>
-                        < BrowserRouter>
+                        <Router>
                             <Switch>
                                 <Route path="/newBicycle" component={NewBicycle}/>
                                 <Route path="/editBicycles" component={EditBicycles}/>
@@ -30,7 +30,7 @@ class App extends Component {
                                 <Route path="/editComponent" component={EditComponentPage}/>
                                 <Route path="/" component={MainPage}/>
                             </Switch>
-                        </BrowserRouter>
+                        </Router>
                     </div>
                 </div>) :
                     (<Signin />)}
