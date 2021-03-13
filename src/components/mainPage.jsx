@@ -14,7 +14,7 @@ class MainPage extends Component {
 
     getBicycles = () => {
         axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-        axios.get(`https://szabicycle.herokuapp.comhttp://localhost:8080/get-all-bicycle`)
+        axios.get(`https://szabicycle.herokuapp.com/get-all-bicycle`)
             .then((response) => {
                     console.log(response.data);
                     this.setState({bicycles: response.data})
@@ -27,7 +27,7 @@ class MainPage extends Component {
 
     getComponents = () => {
         axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
-        axios.get(`https://szabicycle.herokuapp.comhttp://localhost:8080/get-all-component`)
+        axios.get(`https://szabicycle.herokuapp.com/get-all-component`)
             .then((response) => {
                     console.log(response.data);
                     this.setState({components: response.data})
