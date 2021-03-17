@@ -48,7 +48,7 @@ class newComponent extends Component {
         }
     };
 
-    saveProduct = async () => {
+    saveProductData = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post("https://szabicycle.herokuapp.com/saveComponent",
             {
@@ -107,7 +107,11 @@ class newComponent extends Component {
         ).then(resp => {
             console.log(resp);
         })
-        await axios.post(`https://szabicycle.herokuapp.comcomponent/set-main-pic`,
+    };
+
+    setMainPic = async () => {
+        let token = sessionStorage.getItem("token");
+        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
             {
                 id: this.state.productId,
                 mainImage: this.state.mainImage
@@ -123,7 +127,13 @@ class newComponent extends Component {
         ).catch(e => {
             console.log(e.message)
         })
-    };
+    }
+
+    save = () => {
+        this.saveProductData();
+        this.fileUploadHandler();
+        this.setMainPic();
+    }
 
     render() {
         return (
@@ -170,7 +180,7 @@ class newComponent extends Component {
                         <input type="text" className="form-control" id="exampleFormControlInput1"
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
-                    <button className="btn btn-secondary" onClick={this.saveProduct}>Mentés</button>
+                    <br/>
                     <div className="form-group">
                         <div>
                             <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
@@ -201,12 +211,12 @@ class newComponent extends Component {
                     </div>
 
                 </div>
-                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width: this.state.progress + "%"}}
                          aria-valuenow={this.state.progress}
                          aria-valuemin="0" aria-valuemax="100"/>
                 </div>
+                <button className="btn btn-secondary" onClick={this.save}>Mentés</button>
             </div>
         )
     }

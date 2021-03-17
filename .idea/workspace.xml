@@ -21,6 +21,8 @@
   <component name="ChangeListManager">
     <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="Router has been changed">
       <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sigin/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sigin/signin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

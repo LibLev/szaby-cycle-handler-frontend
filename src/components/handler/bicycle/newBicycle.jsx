@@ -189,9 +189,13 @@ class NewBicycle extends Component {
         }).catch(e => {
             console.log(e.message)
         })
-        await axios.post(`https://szabicycle.herokuapp.com/bicycle/set-main-pic`,
+    };
+
+    setMainPic = async () => {
+        let token = sessionStorage.getItem("token");
+        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
             {
-                id: this.state.bicycleId,
+                id: this.state.productId,
                 mainImage: this.state.mainImage
             },
             {
@@ -205,7 +209,13 @@ class NewBicycle extends Component {
         ).catch(e => {
             console.log(e.message)
         })
-    };
+    }
+
+    save = () => {
+        this.saveProductData();
+        this.fileUploadHandler();
+        this.setMainPic();
+    }
 
     render() {
         return (
@@ -311,43 +321,41 @@ class NewBicycle extends Component {
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
                 </div>
-                <button className="btn btn-secondary" onClick={this.saveProduct}>Mentés</button>
+                <br/>
                 <div className="form-group">
                     <div>
                         <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
                         <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
                                onChange={this.fileSelectedHandler}/>
                     </div>
-
-                    <div className="row">
-                        {this.state.previewImages && (
-                            <div className="row">
-                                {this.state.previewImages.map((img, i) => {
-                                    return (
-                                        <div className="col-sm-4" style={{marginTop: "20px"}}>
-                                            <div className="card" style={{width: "18rem"}}>
-                                                <div className="form-check">
-                                                    <input className="form-check-input" type="radio"
-                                                           name="flexRadioDefault"
-                                                           id={i} onChange={this.onChangeCheckBox} value={img}/>
-                                                </div>
-                                                <img className="preview card-body" src={img} alt={"image-" + i}
-                                                     key={i}/>
-                                            </div>
-                                        </div>
-                                    );
-                                })}
-                            </div>
-                        )}
-                    </div>
-
                 </div>
-                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
+                <div className="row">
+                    {this.state.previewImages && (
+                        <div className="row">
+                            {this.state.previewImages.map((img, i) => {
+                                return (
+                                    <div className="col-sm-4" style={{marginTop: "20px"}}>
+                                        <div className="card" style={{width: "18rem"}}>
+                                            <div className="form-check">
+                                                <input className="form-check-input" type="radio"
+                                                       name="flexRadioDefault"
+                                                       id={i} onChange={this.onChangeCheckBox} value={img}/>
+                                            </div>
+                                            <img className="preview card-body" src={img} alt={"image-" + i}
+                                                 key={i}/>
+                                        </div>
+                                    </div>
+                                );
+                            })}
+                        </div>
+                    )}
+                </div>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width: this.state.progress + "%"}}
                          aria-valuenow={this.state.progress}
                          aria-valuemin="0" aria-valuemax="100"/>
                 </div>
+                <button className="btn btn-secondary" onClick={this.save}>Mentés</button>
             </div>
         )
     }
