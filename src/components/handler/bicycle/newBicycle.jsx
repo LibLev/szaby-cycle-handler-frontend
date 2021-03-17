@@ -189,7 +189,7 @@ class NewBicycle extends Component {
         }).catch(e => {
             console.log(e.message)
         })
-        await axios.post(`https://szabicycle.herokuapp.combicycle/set-main-pic`,
+        await axios.post(`https://szabicycle.herokuapp.com/bicycle/set-main-pic`,
             {
                 id: this.state.bicycleId,
                 mainImage: this.state.mainImage

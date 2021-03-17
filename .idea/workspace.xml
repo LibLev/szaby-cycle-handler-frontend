@@ -19,9 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="redirect has been changed in sign in">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="Router has been changed">
+      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +96,7 @@
       <workItem from="1615651972322" duration="599000" />
       <workItem from="1615877167091" duration="2898000" />
       <workItem from="1615883258586" duration="137000" />
-      <workItem from="1615982329043" duration="1348000" />
+      <workItem from="1615982329043" duration="1673000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -253,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615983055494</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="Router has been changed">
+      <created>1615983693214</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1615983693214</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +300,7 @@
     <MESSAGE value="signin" />
     <MESSAGE value="home" />
     <MESSAGE value="redirect has been changed in sign in" />
-    <option name="LAST_COMMIT_MESSAGE" value="redirect has been changed in sign in" />
+    <MESSAGE value="Router has been changed" />
+    <option name="LAST_COMMIT_MESSAGE" value="Router has been changed" />
   </component>
 </project>
