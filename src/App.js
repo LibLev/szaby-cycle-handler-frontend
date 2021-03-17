@@ -16,11 +16,11 @@ class App extends Component {
     render() {
         return (
             <div>
-                {sessionStorage.getItem("token") ? (
-                        <div>
-                            <NavBar/>
-                            <div className="container-md" style={{marginTop: "30px"}}>
-                                <Router>
+                <Router>
+                    {sessionStorage.getItem("token") ? (
+                            <div>
+                                <NavBar/>
+                                <div className="container-md" style={{marginTop: "30px"}}>
                                     <Route path="/newBicycle" component={NewBicycle}/>
                                     <Route path="/editBicycles" component={EditBicycles}/>
                                     <Route path="/editBicycle" component={EditBicyclePage}/>
@@ -28,10 +28,11 @@ class App extends Component {
                                     <Route path="/editComponents" component={editComponents}/>
                                     <Route path="/editComponent" component={EditComponentPage}/>
                                     <Route path="/home" component={MainPage}/>
-                                </Router>
-                            </div>
-                        </div>) :
-                    (<Signin/>)}
+
+                                </div>
+                            </div>) :
+                        (<Signin/>)}
+                </Router>
             </div>
         );
     }
