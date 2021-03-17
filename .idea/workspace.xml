@@ -19,8 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="redirect">
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="setstate">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +100,7 @@
       <workItem from="1615883258586" duration="137000" />
       <workItem from="1615982329043" duration="1673000" />
       <workItem from="1615985515293" duration="1368000" />
+      <workItem from="1615987023068" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -295,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615986864357</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="setstate">
+      <created>1615987094269</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1615987094269</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -315,7 +325,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="progressbar has been added" />
     <MESSAGE value="set main pic to product has been implemented" />
     <MESSAGE value="error has been fixed at product delete" />
     <MESSAGE value="htofix commit" />
@@ -340,6 +349,7 @@
     <MESSAGE value="save has been restored" />
     <MESSAGE value="mainpage" />
     <MESSAGE value="redirect" />
-    <option name="LAST_COMMIT_MESSAGE" value="redirect" />
+    <MESSAGE value="setstate" />
+    <option name="LAST_COMMIT_MESSAGE" value="setstate" />
   </component>
 </project>

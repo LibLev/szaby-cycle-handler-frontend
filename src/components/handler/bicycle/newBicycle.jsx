@@ -106,12 +106,18 @@ class NewBicycle extends Component {
         this.setState({typeOfBicycle: event.target.value});
     };
 
+    renderRedirect = () => {
+        if (this.state.redirect) {
+            return <Redirect to="/editBicycles"/>
+        }
+    };
+
     onChangeCheckBox = event => {
         let name = this.state.temporary[event.target.id].name.toString()
         this.setState({mainImage: name})
     }
 
-    saveProductData = async () => {
+    saveProduct = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post("https://szabicycle.herokuapp.com/saveBicycle",
             {
@@ -159,13 +165,6 @@ class NewBicycle extends Component {
             formData.append("files", files[i]);
         }
         this.setState({selectedFiles: formData, previewImages: images});
-        console.log(this.state.mainImage)
-    };
-
-    renderRedirect = () => {
-        if (this.state.redirect) {
-            return <Redirect to="/editBicycles"/>
-        }
     };
 
     fileUploadHandler = async () => {
@@ -187,9 +186,9 @@ class NewBicycle extends Component {
         }).catch(e => {
             console.log(e.message)
         })
-        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
+        await axios.post(`https://szabicycle.herokuapp.com/bicycle/set-main-pic`,
             {
-                id: this.state.productId,
+                id: this.state.bicycleId,
                 mainImage: this.state.mainImage
             },
             {
@@ -204,32 +203,6 @@ class NewBicycle extends Component {
             console.log(e.message)
         })
     };
-
-    /*setMainPic = async () => {
-        let token = sessionStorage.getItem("token");
-        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
-            {
-                id: this.state.productId,
-                mainImage: this.state.mainImage
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            }).then(resp => {
-                console.log(resp.status);
-            }
-        ).catch(e => {
-            console.log(e.message)
-        })
-    }
-
-    save = () => {
-        this.saveProductData();
-        this.fileUploadHandler();
-        this.setMainPic();
-        this.setState({redirect: true});
-    }*/
 
     render() {
         return (
@@ -335,41 +308,43 @@ class NewBicycle extends Component {
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
                 </div>
-                <button className="btn btn-secondary" onClick={this.saveProductData}>Adatok hozzáadása</button>
+                <button className="btn btn-secondary" onClick={this.saveProduct}>Mentés</button>
                 <div className="form-group">
                     <div>
                         <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
                         <input type="file" className="form-control-file" id="exampleFormControlFile1" multiple
                                onChange={this.fileSelectedHandler}/>
                     </div>
-                </div>
-                <div className="row">
-                    {this.state.previewImages && (
-                        <div className="row">
-                            {this.state.previewImages.map((img, i) => {
-                                return (
-                                    <div className="col-sm-4" style={{marginTop: "20px"}}>
-                                        <div className="card" style={{width: "18rem"}}>
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="radio"
-                                                       name="flexRadioDefault"
-                                                       id={i} onChange={this.onChangeCheckBox} value={img}/>
+
+                    <div className="row">
+                        {this.state.previewImages && (
+                            <div className="row">
+                                {this.state.previewImages.map((img, i) => {
+                                    return (
+                                        <div className="col-sm-4" style={{marginTop: "20px"}}>
+                                            <div className="card" style={{width: "18rem"}}>
+                                                <div className="form-check">
+                                                    <input className="form-check-input" type="radio"
+                                                           name="flexRadioDefault"
+                                                           id={i} onChange={this.onChangeCheckBox} value={img}/>
+                                                </div>
+                                                <img className="preview card-body" src={img} alt={"image-" + i}
+                                                     key={i}/>
                                             </div>
-                                            <img className="preview card-body" src={img} alt={"image-" + i}
-                                                 key={i}/>
                                         </div>
-                                    </div>
-                                );
-                            })}
-                        </div>
-                    )}
+                                    );
+                                })}
+                            </div>
+                        )}
+                    </div>
+
                 </div>
+                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képek feltöltése</button>
                 <div className="progress">
                     <div className="progress-bar" role="progressbar" style={{width: this.state.progress + "%"}}
                          aria-valuenow={this.state.progress}
                          aria-valuemin="0" aria-valuemax="100"/>
                 </div>
-                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képekfeltöltése & Mentés</button>
             </div>
         )
     }

@@ -99,11 +99,14 @@ class newComponent extends Component {
                     console.log("Upload progress" + this.state.progress + "%");
                 },
                 headers: {
-                    Authorization: `Bearer ${token}`,
+                    "Authorization": `Bearer ${token}`,
+                    "Content-Type": "multipart/form-data"
                 },
             }
         ).then(resp => {
             console.log(resp.status);
+        }).catch(e => {
+            console.log(e.message)
         })
         await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
             {
@@ -122,32 +125,6 @@ class newComponent extends Component {
             console.log(e.message)
         })
     };
-
-/*    setMainPic = async () => {
-        let token = sessionStorage.getItem("token");
-        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
-            {
-                id: this.state.productId,
-                mainImage: this.state.mainImage
-            },
-            {
-                headers: {
-                    "Authorization": `Bearer ${token}`
-                }
-            }).then(resp => {
-                console.log(resp.status);
-            }
-        ).catch(e => {
-            console.log(e.message)
-        })
-    }
-
-    save = () => {
-        this.saveProductData();
-        this.fileUploadHandler();
-        this.setMainPic();
-        this.setState({redirect: true});
-    }*/
 
     render() {
         return (
