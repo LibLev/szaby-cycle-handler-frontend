@@ -21,7 +21,7 @@ class Signin extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            setTimeout(function (){window.location.reload()}, 2000);
+            setTimeout(function (){window.location.reload()}, 1000);
         }
     };
 

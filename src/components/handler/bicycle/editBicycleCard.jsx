@@ -35,7 +35,7 @@ class EditBicycleCard extends Component {
 
     renderRedirect2() {
         if (this.state.redirect2) {
-            setTimeout(function (){window.location.reload()}, 3000);
+            setTimeout(function (){window.location.reload()}, 1000);
         }
     }
 
