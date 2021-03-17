@@ -24,7 +24,7 @@ class Signin extends Component {
 
     renderRedirect = () => {
         if (this.state.redirect) {
-            setTimeout(function (){return <Redirect to="/home"/>}, 2000);
+            return <Redirect to="/home"/>
         }
     };
 

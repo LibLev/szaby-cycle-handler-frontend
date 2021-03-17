@@ -19,10 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="signin">
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="home">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/navbar/navbar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/navbar/navbar.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sigin/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sigin/signin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,6 +97,7 @@
       <workItem from="1615651972322" duration="599000" />
       <workItem from="1615877167091" duration="2898000" />
       <workItem from="1615883258586" duration="137000" />
+      <workItem from="1615982329043" duration="708000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -232,7 +232,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615643812029</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="home">
+      <created>1615982374440</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1615982374440</updated>
+    </task>
+    <task id="LOCAL-00021" summary="home">
+      <created>1615982429447</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1615982429447</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +285,7 @@
     <MESSAGE value="redirect has been put back with Redirect in signin.jsx" />
     <MESSAGE value="mainPage" />
     <MESSAGE value="signin" />
-    <option name="LAST_COMMIT_MESSAGE" value="signin" />
+    <MESSAGE value="home" />
+    <option name="LAST_COMMIT_MESSAGE" value="home" />
   </component>
 </project>
