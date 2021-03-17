@@ -319,7 +319,7 @@ class NewBicycle extends Component {
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
                 </div>
-                <br/>
+                <button className="btn btn-secondary" onClick={this.saveProductData}>Adatok hozzáadása</button>
                 <div className="form-group">
                     <div>
                         <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
@@ -353,7 +353,7 @@ class NewBicycle extends Component {
                          aria-valuenow={this.state.progress}
                          aria-valuemin="0" aria-valuemax="100"/>
                 </div>
-                <button className="btn btn-secondary" onClick={this.save}>Mentés</button>
+                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képekfeltöltése & Mentés</button>
             </div>
         )
     }

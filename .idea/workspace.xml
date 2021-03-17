@@ -19,18 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="sign in and add new product has been changed">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/editBicycleCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/editBicycleCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/editBicyclePage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/editBicyclePage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/editBicycles.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/editBicycles.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/component/editComponentCard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/editComponentCard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/component/editComponentPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/editComponentPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/component/editComponents.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/editComponents.jsx" afterDir="false" />
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="console logs has been edited">
       <change beforePath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/mainPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/mainPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sigin/signin.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sigin/signin.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +97,7 @@
       <workItem from="1615877167091" duration="2898000" />
       <workItem from="1615883258586" duration="137000" />
       <workItem from="1615982329043" duration="1673000" />
-      <workItem from="1615985515293" duration="504000" />
+      <workItem from="1615985515293" duration="863000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -277,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615984969035</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="console logs has been edited">
+      <created>1615986055015</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1615986055015</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +317,7 @@
     <MESSAGE value="redirect has been changed in sign in" />
     <MESSAGE value="Router has been changed" />
     <MESSAGE value="sign in and add new product has been changed" />
-    <option name="LAST_COMMIT_MESSAGE" value="sign in and add new product has been changed" />
+    <MESSAGE value="console logs has been edited" />
+    <option name="LAST_COMMIT_MESSAGE" value="console logs has been edited" />
   </component>
 </project>

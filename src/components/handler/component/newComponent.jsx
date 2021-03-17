@@ -105,9 +105,24 @@ class newComponent extends Component {
         ).then(resp => {
             console.log(resp.status);
         })
+        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
+            {
+                id: this.state.productId,
+                mainImage: this.state.mainImage
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(resp => {
+                console.log(resp.status);
+            }
+        ).catch(e => {
+            console.log(e.message)
+        })
     };
 
-    setMainPic = async () => {
+/*    setMainPic = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
             {
@@ -131,7 +146,7 @@ class newComponent extends Component {
         this.fileUploadHandler();
         this.setMainPic();
         this.setState({redirect: true});
-    }
+    }*/
 
     render() {
         return (
@@ -178,7 +193,7 @@ class newComponent extends Component {
                         <input type="text" className="form-control" id="exampleFormControlInput1"
                                placeholder="100" onChange={this.productPriceOnChange}/>
                     </div>
-                    <br/>
+                    <button className="btn btn-secondary" onClick={this.saveProductData}>Adatok hozzáadása</button>
                     <div className="form-group">
                         <div>
                             <label htmlFor="exampleFormControlFile1">Képek kiválasztása</label>
@@ -214,7 +229,7 @@ class newComponent extends Component {
                          aria-valuenow={this.state.progress}
                          aria-valuemin="0" aria-valuemax="100"/>
                 </div>
-                <button className="btn btn-secondary" onClick={this.save}>Mentés</button>
+                <button className="btn btn-secondary" onClick={this.fileUploadHandler}>Képekfeltöltése & Mentés</button>
             </div>
         )
     }
