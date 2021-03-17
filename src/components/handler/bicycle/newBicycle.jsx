@@ -184,7 +184,6 @@ class NewBicycle extends Component {
             }
         ).then(resp => {
             console.log(resp.status);
-            this.setState({redirect: true});
         }).catch(e => {
             console.log(e.message)
         })
@@ -199,6 +198,7 @@ class NewBicycle extends Component {
                 }
             }).then(resp => {
                 console.log(resp.status);
+                this.setState({redirect: true});
             }
         ).catch(e => {
             console.log(e.message)
