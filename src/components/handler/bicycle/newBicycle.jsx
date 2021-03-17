@@ -184,12 +184,28 @@ class NewBicycle extends Component {
             }
         ).then(resp => {
             console.log(resp.status);
+            this.setState({redirect: true});
         }).catch(e => {
+            console.log(e.message)
+        })
+        await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
+            {
+                id: this.state.productId,
+                mainImage: this.state.mainImage
+            },
+            {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            }).then(resp => {
+                console.log(resp.status);
+            }
+        ).catch(e => {
             console.log(e.message)
         })
     };
 
-    setMainPic = async () => {
+    /*setMainPic = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post(`https://szabicycle.herokuapp.com/component/set-main-pic`,
             {
@@ -213,7 +229,7 @@ class NewBicycle extends Component {
         this.fileUploadHandler();
         this.setMainPic();
         this.setState({redirect: true});
-    }
+    }*/
 
     render() {
         return (
