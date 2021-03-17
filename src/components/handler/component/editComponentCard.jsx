@@ -31,7 +31,7 @@ class EditComponentCard extends Component {
                 Authorization: `Bearer ${token}`,
             },
         }).then((resp) => {
-            console.log(resp.data);
+            console.log(resp.status);
         }).catch((e) => {
             console.log(e.message)
         });

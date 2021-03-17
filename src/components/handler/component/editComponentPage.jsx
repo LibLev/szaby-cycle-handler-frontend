@@ -38,6 +38,7 @@ class EditComponentPage extends Component {
     getProductData = () => {
         axios.get("https://szabicycle.herokuapp.com/component/" + localStorage.getItem("productId"))
             .then((response) => {
+                    console.log(response.status);
                     this.setState({data: response.data});
                     this.setState({isLoaded: true})
                 },
@@ -67,7 +68,7 @@ class EditComponentPage extends Component {
                 Authorization: `Bearer ${token}`,
             },
         }).then((resp) => {
-            console.log(resp.data);
+            console.log(resp.status);
             this.setState({redirect: true})
         }).catch((e) => {
             console.log(e.message)

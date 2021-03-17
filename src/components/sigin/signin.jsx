@@ -1,7 +1,6 @@
 import React, {Component} from "react";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.css';
-import {Redirect} from "react-router";
 
 
 class Signin extends Component {
@@ -14,12 +13,10 @@ class Signin extends Component {
 
     onUsernameChange = (event) => {
         this.setState({username: event.target.value});
-        console.log(this.state.username);
     };
 
     onPasswordChange = (event) => {
         this.setState({password: event.target.value});
-        console.log(this.state.password);
     };
 
     renderRedirect = () => {
@@ -36,7 +33,7 @@ class Signin extends Component {
                 password: this.state.password
             }
         ).then(resp => {
-            console.log(resp.data);
+            console.log(resp.status);
             sessionStorage.setItem("token", resp.data.token);
             this.setState({redirect: true});
         }).catch((e) => {

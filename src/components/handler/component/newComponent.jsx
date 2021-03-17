@@ -63,7 +63,7 @@ class newComponent extends Component {
                 },
             })
             .then(resp => {
-                console.log(resp);
+                console.log(resp.status);
                 this.setState({productId:resp.data.id})
             }).catch(e =>{
                 console.log(e.message)
@@ -73,7 +73,6 @@ class newComponent extends Component {
     onChangeCheckBox = event => {
         let name = this.state.temporary[event.target.id].name.toString()
         this.setState({mainImage: name})
-        console.log(this.state.mainImage)
     }
 
     fileSelectedHandler = event => {
@@ -88,7 +87,6 @@ class newComponent extends Component {
             formData.append("files", files[i]);
         }
         this.setState({selectedFiles: formData, previewImages: images});
-        console.log(this.state.mainImage)
     };
 
     fileUploadHandler = async () => {
@@ -105,7 +103,7 @@ class newComponent extends Component {
                 },
             }
         ).then(resp => {
-            console.log(resp);
+            console.log(resp.status);
         })
     };
 
@@ -121,8 +119,7 @@ class newComponent extends Component {
                     "Authorization": `Bearer ${token}`
                 }
             }).then(resp => {
-                console.log(resp);
-                this.setState({redirect: true});
+                console.log(resp.status);
             }
         ).catch(e => {
             console.log(e.message)
@@ -133,6 +130,7 @@ class newComponent extends Component {
         this.saveProductData();
         this.fileUploadHandler();
         this.setMainPic();
+        this.setState({redirect: true});
     }
 
     render() {

@@ -104,16 +104,14 @@ class NewBicycle extends Component {
 
     onChangeProductType = event => {
         this.setState({typeOfBicycle: event.target.value});
-        console.log(this.state.productType);
     };
 
     onChangeCheckBox = event => {
         let name = this.state.temporary[event.target.id].name.toString()
         this.setState({mainImage: name})
-        console.log(this.state.mainImage)
     }
 
-    saveProduct = async () => {
+    saveProductData = async () => {
         let token = sessionStorage.getItem("token");
         await axios.post("https://szabicycle.herokuapp.com/saveBicycle",
             {
@@ -141,7 +139,7 @@ class NewBicycle extends Component {
                 },
             })
             .then(resp => {
-                console.log(resp);
+                console.log(resp.status);
                 this.setState({bicycleId: resp.data.id})
             })
             .catch(e => {
@@ -185,7 +183,7 @@ class NewBicycle extends Component {
                 },
             }
         ).then(resp => {
-            console.log(resp);
+            console.log(resp.status);
         }).catch(e => {
             console.log(e.message)
         })
@@ -203,8 +201,7 @@ class NewBicycle extends Component {
                     "Authorization": `Bearer ${token}`
                 }
             }).then(resp => {
-                console.log(resp);
-                this.setState({redirect: true});
+                console.log(resp.status);
             }
         ).catch(e => {
             console.log(e.message)
@@ -215,6 +212,7 @@ class NewBicycle extends Component {
         this.saveProductData();
         this.fileUploadHandler();
         this.setMainPic();
+        this.setState({redirect: true});
     }
 
     render() {

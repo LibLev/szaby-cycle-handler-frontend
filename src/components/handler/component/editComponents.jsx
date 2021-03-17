@@ -14,7 +14,7 @@ class editComponents extends Component {
         axios.defaults.headers.get["Access-Control-Allow-Origin"] = "*";
         axios.get(`https://szabicycle.herokuapp.com/get-all-component`,)
             .then((response) => {
-                    console.log(response.data);
+                    console.log(response.status);
                     this.setState({data: response.data})
                 },
                 (error) => {
