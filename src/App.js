@@ -28,7 +28,6 @@ class App extends Component {
                                     <Route path="/editComponents" component={editComponents}/>
                                     <Route path="/editComponent" component={EditComponentPage}/>
                                     <Route path="/home" component={MainPage}/>
-                                    <MainPage />
                                 </div>
                             </div>) :
                         (<Signin/>)}
