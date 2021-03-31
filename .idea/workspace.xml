@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="setstate">
+    <list default="true" id="97bb82f3-f948-4810-9814-6a08e5ab1b81" name="Default Changelist" comment="buttons, timeout">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/bicycle/newBicycle.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/handler/component/newComponent.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +64,7 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager">
@@ -100,7 +99,11 @@
       <workItem from="1615883258586" duration="137000" />
       <workItem from="1615982329043" duration="1673000" />
       <workItem from="1615985515293" duration="1368000" />
-      <workItem from="1615987023068" duration="773000" />
+      <workItem from="1615987023068" duration="1620000" />
+      <workItem from="1616147021741" duration="89000" />
+      <workItem from="1616148722617" duration="636000" />
+      <workItem from="1616161694776" duration="1001000" />
+      <workItem from="1616243273160" duration="2137000" />
     </task>
     <task id="LOCAL-00001" summary="upload and download pic with aws is working&#10;delete token after browser close ahs been added">
       <created>1615118128713</created>
@@ -305,7 +308,21 @@
       <option name="project" value="LOCAL" />
       <updated>1615987094269</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="setstate">
+      <created>1615987806208</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1615987806208</updated>
+    </task>
+    <task id="LOCAL-00031" summary="buttons, timeout">
+      <created>1615988037820</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1615988037820</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -325,7 +342,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="set main pic to product has been implemented" />
     <MESSAGE value="error has been fixed at product delete" />
     <MESSAGE value="htofix commit" />
     <MESSAGE value="proxy has been changed to heroku one" />
@@ -350,6 +366,7 @@
     <MESSAGE value="mainpage" />
     <MESSAGE value="redirect" />
     <MESSAGE value="setstate" />
-    <option name="LAST_COMMIT_MESSAGE" value="setstate" />
+    <MESSAGE value="buttons, timeout" />
+    <option name="LAST_COMMIT_MESSAGE" value="buttons, timeout" />
   </component>
 </project>

@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import NavBar from "./components/navbar/navbar";
-import {BrowserRouter as Router, Route} from "react-router-dom";
+import {BrowserRouter as Router, Route, Redirect} from "react-router-dom";
 import Signin from "./components/sigin/signin";
 import NewBicycle from "./components/handler/bicycle/newBicycle";
 import EditBicycles from "./components/handler/bicycle/editBicycles";
@@ -28,6 +28,7 @@ class App extends Component {
                                     <Route path="/editComponents" component={editComponents}/>
                                     <Route path="/editComponent" component={EditComponentPage}/>
                                     <Route path="/home" component={MainPage}/>
+                                    <Route exact path="/"  component={()=><Redirect to="/home"/>}/>
                                 </div>
                             </div>) :
                         (<Signin/>)}
